@@ -1,0 +1,12 @@
+LICENSE
+Makefile.PL
+MANIFEST
+bin/limitpath
+lib/Dpchrist/File/LimitPath.pm
+t/0_compile_modules.t
+t/0_compile_scripts.t
+t/1_Dpchrist-File-LimitPath.t
+t/2_limit_path.t
+t/9_pod.t
+t/9_prereq.t
+META.yml                                 Module meta-data (added by MakeMaker)

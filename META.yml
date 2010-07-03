@@ -1,0 +1,25 @@
+--- #YAML:1.0
+name:               Dpchrist-File-LimitPath
+version:            1.027
+abstract:           limit path lengths
+author:
+    - David Paul Christensen dpchrist@holgerdanske.com>
+license:            unknown
+distribution_type:  module
+configure_requires:
+    ExtUtils::MakeMaker:  0
+build_requires:
+    ExtUtils::MakeMaker:  0
+requires:
+    Dpchrist::Debug:   1.036
+    Dpchrist::Module:  1.016
+    feature:           0
+    File::Slurp:       0
+no_index:
+    directory:
+        - t
+        - inc
+generated_by:       ExtUtils::MakeMaker version 6.54
+meta-spec:
+    url:      http://module-build.sourceforge.net/META-spec-v1.4.html
+    version:  1.4

@@ -1,0 +1,132 @@
+#! /usr/bin/perl
+#######################################################################
+# $Id: limitpath,v 1.14 2010-03-06 05:36:36 dpchrist Exp $
+#######################################################################
+# uses:
+#----------------------------------------------------------------------
+
+use strict;
+use warnings;
+
+use constant			DEBUG => 0;
+
+use Carp;
+use Data::Dumper;
+use Dpchrist::Debug		qw( :all );
+use Dpchrist::File::LimitPath	qw( :all );
+use Getopt::Long;
+use Pod::Usage;
+
+#######################################################################
+# globals:
+#----------------------------------------------------------------------
+
+our $VERSION = sprintf "%d.%03d", q$Revision: 1.14 $=~/: (\d+)\.(\d+)/;
+
+### suppress 'Name "Dpchrist::File::Newest::opt" used only once'
+$Dpchrist::File::LimitPath::opt{-used_only_once}++;
+
+my $opt = \%Dpchrist::File::LimitPath::opt;
+
+my %getoptions_args = (
+    "delete|f"		=> \$opt->{-delete},
+    "dry-run|n"		=> \$opt->{-dry_run},
+    "help|?"		=> \$opt->{-help},
+    "limit|l=i"		=> \$opt->{-limit},
+    "man"		=> \$opt->{-man},
+    "quiet|q"		=> \$opt->{-quiet},
+);
+
+#######################################################################
+# main script:
+#----------------------------------------------------------------------
+
+{
+    ### process command-line options:
+
+    Getopt::Long::Configure("bundling");
+
+    my $r = GetOptions( %getoptions_args );
+
+    if (DEBUG && debug_enabled) {
+	$Data::Dumper::Sortkeys	= 1;
+	$|			= 1;
+	ddump [$opt, \@ARGV],
+	    [qw(opt   *ARGV)];
+    }
+
+    confess "ERROR processing command line options"
+	unless $r;
+
+    pod2usage(-verbose => 2, -exitval => 0) if $opt->{-man};
+
+    pod2usage(0) if $opt->{-help};
+
+    pod2usage(1) unless @ARGV;
+
+
+    ### do the work:
+
+    limit_path(@ARGV);
+}
+
+#######################################################################
+# end of code:
+#----------------------------------------------------------------------
+
+__END__
+
+#######################################################################
+
+=head1 NAME
+
+limitpath -  limit path length of files
+
+
+=head1 SYNOPSIS
+
+    $ limitpath [OPTION...] PATH...
+
+    --delete, -f	Delete problem files
+    --dry-run, -n	Dry run, don't change any files
+    --help, -?		Print usage message
+    --limit, -l		Path length limit (default = 220)
+    --man		Print manual page documentation
+    --quiet, -q         Only print error messages
+
+
+=head1 DESCRIPTION
+
+Command-line interface to Dpchrist::File::LimitPath::limit_path().
+
+
+=head1 SEE ALSO
+
+    Dpchrist::File::LimitPath
+
+
+=head1 AUTHOR
+
+David Paul Christensen dpchrist@holgerdanske.com
+
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright 2010 by David Paul Christensen dpchrist@holgerdanske.com
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; version 2.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,
+USA.
+
+=cut
+
