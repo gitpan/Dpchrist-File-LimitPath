@@ -1,5 +1,5 @@
 #######################################################################
-# $Id: LimitPath.pm,v 1.29 2010-11-25 02:27:10 dpchrist Exp $
+# $Id: LimitPath.pm,v 1.30 2010-11-25 20:25:22 dpchrist Exp $
 #######################################################################
 # package:
 #----------------------------------------------------------------------
@@ -21,7 +21,7 @@ our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
 our @EXPORT = qw();
 
-our $VERSION = sprintf "%d.%03d", q$Revision: 1.29 $=~/: (\d+)\.(\d+)/;
+our $VERSION = sprintf "%d.%03d", q$Revision: 1.30 $=~/: (\d+)\.(\d+)/;
 
 #######################################################################
 # uses:
@@ -49,7 +49,6 @@ our %long_paths;		# key is path
 our %opt = (			# options
     -limit	=> 220,
 );
-
 
 #######################################################################
 # private subroutines:
@@ -111,6 +110,13 @@ Dpchrist::File::LimitPath - limit path lengths
 
 
 =head1 DESCRIPTION
+
+This documentation describes module revision $Revision: 1.30 $.
+
+
+This is alpha test level software
+and may change or disappear at any time.
+
 
 =head2 SUBROUTINES
 
@@ -330,18 +336,25 @@ See 'perldoc Export' for everything in between.
 		    
 =head1 INSTALLATION
 
+Old school:
+
     perl Makefile.PL
     make
     make test
     make install
 
+Minimal:
+
+    cpan Dpchrist::File::LimitPath
+
+Complete:
+
+    cpan Bundle::Dpchrist
+
 
 =head1 DEPENDENCIES
 
-    Perl 5.10.0
-    Dpchrist::Debug
-    Dpchrist::Module
-    File::Slurp
+    See Makefile.PL in source distribution root directory.
 
 
 =head1 SEE ALSO

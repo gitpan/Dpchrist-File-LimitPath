@@ -1,6 +1,7 @@
 LICENSE
-Makefile.PL
 MANIFEST
+README
+Makefile.PL
 bin/limitpath
 lib/Dpchrist/File/LimitPath.pm
 t/0_compile_modules.t
