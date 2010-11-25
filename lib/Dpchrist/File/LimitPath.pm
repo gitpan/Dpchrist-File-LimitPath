@@ -1,12 +1,11 @@
 #######################################################################
-# $Id: LimitPath.pm,v 1.28 2010-03-06 05:38:09 dpchrist Exp $
+# $Id: LimitPath.pm,v 1.29 2010-11-25 02:27:10 dpchrist Exp $
 #######################################################################
 # package:
 #----------------------------------------------------------------------
 
 package Dpchrist::File::LimitPath;
 
-use 5.010000;
 use strict;
 use warnings;
 
@@ -22,7 +21,7 @@ our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
 our @EXPORT = qw();
 
-our $VERSION = sprintf "%d.%03d", q$Revision: 1.28 $=~/: (\d+)\.(\d+)/;
+our $VERSION = sprintf "%d.%03d", q$Revision: 1.29 $=~/: (\d+)\.(\d+)/;
 
 #######################################################################
 # uses:
