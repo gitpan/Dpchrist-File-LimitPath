@@ -1,5 +1,5 @@
 #######################################################################
-# $Id: Makefile.PL,v 1.14 2010-11-25 20:25:21 dpchrist Exp $
+# $Id: Makefile.PL,v 1.15 2010-11-26 20:59:43 dpchrist Exp $
 #
 # Copyright 2010 by David Paul Christensen dpchrist@holgerdanske.com
 #
@@ -26,7 +26,7 @@ use Dpchrist::Module::MakefilePL (
 	lib/Dpchrist/File/LimitPath.pm
 	bin/limitpath
     )],
-    -readme		=> qw(lib/Dpchrist/File/LimitPath.pm),
+    -readme		=> 'lib/Dpchrist/File/LimitPath.pm',
     -release		=> $ENV{RELEASE_ROOT},
 );
 
@@ -34,8 +34,8 @@ WriteMakefile(
     NAME		=> 'Dpchrist::File::LimitPath',
     VERSION_FROM	=> 'lib/Dpchrist/File/LimitPath.pm',
     PREREQ_PM		=> {
-	'Dpchrist::Debug'		=> 1.041,
-	'Dpchrist::Module'		=> 1.021,
+	'Dpchrist::Debug'		=> 1.042,
+	'Dpchrist::Module'		=> 1.023,
 	'File::Slurp'			=> 0,
 	'feature'			=> 0,
     },
