@@ -1,5 +1,5 @@
 #######################################################################
-# $Id: Makefile.PL,v 1.16 2010-11-27 03:37:58 dpchrist Exp $
+# $Id: Makefile.PL,v 1.17 2010-11-27 07:37:15 dpchrist Exp $
 #
 # Copyright 2010 by David Paul Christensen dpchrist@holgerdanske.com
 #
@@ -39,8 +39,8 @@ WriteMakefile(
     NAME		=> 'Dpchrist::File::LimitPath',
     VERSION_FROM	=> 'lib/Dpchrist/File/LimitPath.pm',
     PREREQ_PM		=> {
-	Dpchrist::Debug		=> 1.043,
-	Dpchrist::Module	=> 1.025,
+	Dpchrist::Debug		=> 1.044,
+	Dpchrist::Module	=> 1.026,
 	File::Slurp		=> 0,
 	Getopt::Long		=> 0,
 	Pod::Html		=> 0,
