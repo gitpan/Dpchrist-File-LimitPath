@@ -1,5 +1,5 @@
 #######################################################################
-# $Id: Makefile.PL,v 1.17 2010-11-27 07:37:15 dpchrist Exp $
+# $Id: Makefile.PL,v 1.19 2010-12-01 19:41:05 dpchrist Exp $
 #
 # Copyright 2010 by David Paul Christensen dpchrist@holgerdanske.com
 #
@@ -18,42 +18,44 @@
 # USA.
 #######################################################################
 
+package Dpchrist::ExtUtils::MakeMaker;	# for symbols
+
+use ExtUtils::MakeMaker;
+
+eval "use Test::Manifest";
+warn $@ if $@;
+
 eval {
-    require Dpchrist::Module::MakefilePL;
-    
-    import Dpchrist::Module::MakefilePL (
-	-mcpani		=> $ENV{CPAN_AUTHORID},
-	-pod2html	 => [qw(
-	    lib/Dpchrist/File/LimitPath.pm
-	    bin/limitpath
-	)],
-	-readme		=> 'lib/Dpchrist/File/LimitPath.pm',
-	-release	=> $ENV{RELEASE_ROOT},
+    require Dpchrist::ExtUtils::MakeMaker;
+    import  Dpchrist::ExtUtils::MakeMaker (
+	postamble => sub {
+	    my ($o, $prev) = @_;
+	    return join('',
+		$prev,
+		mcpani  ($o, $ENV{CPAN_AUTHORID}),
+		pod2html($o, qw( lib/Dpchrist/File/LimitPath.pm
+				 perl-bin/limitpath )),
+		readme  ($o, 'lib/Dpchrist/File/LimitPath.pm'),
+		release ($o, $ENV{RELEASE_ROOT}),
+	    );
+	},
     );
 };
 warn $@ if $@;
-
-use ExtUtils::MakeMaker;
 
 WriteMakefile(
     NAME		=> 'Dpchrist::File::LimitPath',
     VERSION_FROM	=> 'lib/Dpchrist/File/LimitPath.pm',
     PREREQ_PM		=> {
-	Dpchrist::Debug		=> 1.044,
-	Dpchrist::Module	=> 1.026,
+	Dpchrist::Debug		=> 1.046,
 	File::Slurp		=> 0,
-	Getopt::Long		=> 0,
-	Pod::Html		=> 0,
-	Pod::Text		=> 0,
-	Pod::Usage		=> 0,
-	feature			=> 0,
     },
     ABSTRACT_FROM	=> 'lib/Dpchrist/File/LimitPath.pm',
     AUTHOR		=>
 	'David Paul Christensen dpchrist@holgerdanske.com>',
-    EXE_FILES		=> ['./bin/limitpath'],
+    EXE_FILES		=> ['./perl-bin/limitpath'],
     clean		=> {
-	FILES => ' *~tmp */*~tmp Dpchrist* limitpath* ',
+	FILES => q( *~tmp */*~tmp *.tar debug.log ),
     },
 );
 

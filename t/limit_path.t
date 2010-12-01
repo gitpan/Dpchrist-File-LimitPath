@@ -1,4 +1,4 @@
-# $Id: 2_limit_path.t,v 1.13 2009-12-02 20:27:32 dpchrist Exp $
+# $Id: limit_path.t,v 1.14 2010-11-30 20:20:15 dpchrist Exp $
 
 use Test::More 			tests => 15;
 
@@ -9,6 +9,8 @@ use Carp;
 use Data::Dumper;
 use Dpchrist::File::LimitPath	qw( :all );
 use File::Basename;
+use File::Path			qw( make_path remove_tree );
+use File::Slurp;
 
 
 $Data::Dumper::Sortkeys = 1;
@@ -53,15 +55,12 @@ my $y;
 sub gen_t_tree
 {
     if (-e $t_tree) {
-	system "rm -rf $t_tree"
-	    and confess "ERROR removing tree '$t_tree': $!";
+	remove_tree $t_tree, {verbose =>1 };
     }
     foreach my $p (@t_tree) {
 	my $d = dirname $p;
-	system "mkdir -p $d"
-	    and confess "ERROR creating directory '$d': $!";
-	system "touch $p"
-	    and confess "ERROR creating file '$p': $!";
+	make_path $d, {verbose => 1};
+	write_file $p, __FILE__, __LINE__, localtime, "\n";
     }
 }
 

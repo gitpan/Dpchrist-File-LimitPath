@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Dpchrist-File-LimitPath
-version:            1.033
+version:            1.034
 abstract:           limit path lengths
 author:
     - David Paul Christensen dpchrist@holgerdanske.com>
@@ -11,14 +11,8 @@ configure_requires:
 build_requires:
     ExtUtils::MakeMaker:  0
 requires:
-    Dpchrist::Debug:   1.044
-    Dpchrist::Module:  1.026
-    feature:           0
-    File::Slurp:       0
-    Getopt::Long:      0
-    Pod::Html:         0
-    Pod::Text:         0
-    Pod::Usage:        0
+    Dpchrist::Debug:  1.046
+    File::Slurp:      0
 no_index:
     directory:
         - t

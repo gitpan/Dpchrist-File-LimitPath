@@ -2,12 +2,13 @@ LICENSE
 MANIFEST
 README
 Makefile.PL
-bin/limitpath
+perl-bin/limitpath
 lib/Dpchrist/File/LimitPath.pm
-t/0_compile_modules.t
-t/0_compile_scripts.t
-t/1_Dpchrist-File-LimitPath.t
-t/2_limit_path.t
-t/9_pod.t
-t/9_prereq.t
+t/Dpchrist-File-LimitPath.t
+t/limit_path.t
+t/test-compile-all_pl_files_ok-perl-bin.t
+t/test-compile-all_pm_files_ok.t
+t/test-pod-all_pod_files_ok.t
+t/test-prereq-prereq_ok.t
+t/test_manifest
 META.yml                                 Module meta-data (added by MakeMaker)
