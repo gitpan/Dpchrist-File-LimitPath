@@ -1,5 +1,5 @@
 #######################################################################
-# $Id: LimitPath.pm,v 1.35 2010-12-03 05:13:49 dpchrist Exp $
+# $Id: LimitPath.pm,v 1.36 2010-12-13 03:20:02 dpchrist Exp $
 #######################################################################
 # package:
 #----------------------------------------------------------------------
@@ -21,7 +21,7 @@ our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
 our @EXPORT = qw();
 
-our $VERSION = sprintf "%d.%03d", q$Revision: 1.35 $=~/: (\d+)\.(\d+)/;
+our $VERSION = sprintf "%d.%03d", q$Revision: 1.36 $=~/: (\d+)\.(\d+)/;
 
 #######################################################################
 # uses:
@@ -111,7 +111,7 @@ Dpchrist::File::LimitPath - limit path lengths
 
 =head1 DESCRIPTION
 
-This documentation describes module revision $Revision: 1.35 $.
+This documentation describes module revision $Revision: 1.36 $.
 
 
 This is alpha test level software
