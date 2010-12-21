@@ -1,13 +1,14 @@
-# $Id: limit_path.t,v 1.14 2010-11-30 20:20:15 dpchrist Exp $
-
-use Test::More 			tests => 15;
+# $Id: limit_path.t,v 1.16 2010-12-20 06:05:21 dpchrist Exp $
 
 use strict;
 use warnings;
 
+use Test::More 			tests => 15;
+
+use Dpchrist::File::LimitPath	qw( limit_path );
+
 use Carp;
 use Data::Dumper;
-use Dpchrist::File::LimitPath	qw( :all );
 use File::Basename;
 use File::Path			qw( make_path remove_tree );
 use File::Slurp;
@@ -60,7 +61,7 @@ sub gen_t_tree
     foreach my $p (@t_tree) {
 	my $d = dirname $p;
 	make_path $d, {verbose => 1};
-	write_file $p, __FILE__, __LINE__, localtime, "\n";
+	write_file $p, basename(__FILE__), __LINE__, localtime, "\n";
     }
 }
 
